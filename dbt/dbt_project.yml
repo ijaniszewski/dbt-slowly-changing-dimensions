@@ -1,0 +1,19 @@
+name: 'dbt_scd'
+version: '1.0'
+config-version: 2
+
+profile: 'demo_mysql'
+
+model-paths: ["models"]
+snapshot-paths: ["snapshots"]
+
+models:
+  demo_mysql:
+    staging:
+      materialized: view
+    marts:
+      materialized: table
+
+snapshots:
+  demo_mysql:
+    target_schema: demo_db

@@ -1,0 +1,6 @@
+version: 2
+
+sources:
+  - name: demo_db
+    tables:
+      - name: customers

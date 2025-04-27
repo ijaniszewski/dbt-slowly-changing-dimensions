@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql_scd
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: demo_db
+      MYSQL_USER: demo_user
+      MYSQL_PASSWORD: demo_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+      - ./init:/docker-entrypoint-initdb.d
+      - ./data/customers_initial.csv:/var/lib/mysql-files/customers_initial.csv
+      - ./data/customers_updated.csv:/var/lib/mysql-files/customers_updated.csv
+
+  dbt:
+    image: python:3.10-slim
+    container_name: dbt_scd
+    depends_on:
+      - mysql
+    volumes:
+      - ./dbt:/usr/app
+    working_dir: /usr/app
+    environment:
+      DBT_PROFILES_DIR: /usr/app/profiles
+    command: >
+      bash -c "
+      pip install dbt-mysql &&
+      tail -f /dev/null
+      "

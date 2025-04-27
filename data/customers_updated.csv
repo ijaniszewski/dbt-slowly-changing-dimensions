@@ -1,0 +1,4 @@
+customer_id,first_name,last_name,email,address,updated_at
+1,John,Doe,john.new@example.com,789 Elm St,2025-01-01
+2,Jane,Smith,jane.smith@example.com,456 Oak Ave,2024-01-01
+3,Bob,Johnson,bob.johnson@example.com,555 Maple Rd,2025-01-01

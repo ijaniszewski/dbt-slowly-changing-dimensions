@@ -1,0 +1,10 @@
+demo_mysql:
+  outputs:
+    dev:
+      type: mysql
+      server: mysql
+      port: 3306
+      user: demo_user
+      password: demo_pass
+      schema: demo_db
+  target: dev
