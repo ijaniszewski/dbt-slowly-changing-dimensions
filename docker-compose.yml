@@ -15,10 +15,11 @@ services:
     volumes:
       - ./mysql_data:/var/lib/mysql
       - ./init:/docker-entrypoint-initdb.d
-      - ./data/customers_initial.csv:/var/lib/mysql-files/customers_initial.csv
-      - ./data/customers_updated.csv:/var/lib/mysql-files/customers_updated.csv
+      - ./data/:/var/lib/mysql-files/
 
   dbt:
+    # As of now (2025), there is no official dbt-mysql image published by dbt Labs
+    # thats why we need need to create our own image and install dbt manually
     image: python:3.10-slim
     container_name: dbt_scd
     depends_on:

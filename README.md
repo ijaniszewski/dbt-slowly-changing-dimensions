@@ -35,7 +35,7 @@ select * from customers_scd2;
 
 ### Load updated customers
 ```bash
-docker exec -i mysql_scd mysql -u root -proot demo_db < ./load_customers_updated.sql
+docker exec -i mysql_scd mysql -u root -proot demo_db < ./scripts/02_load_customers_updated.sql
 ```
 
 ### Second build (after updates)
@@ -46,6 +46,18 @@ docker exec -it dbt_scd dbt build
 ### Check tables again (after update)
 ```bash
 docker exec -it mysql_scd mysql -u demo_user -pdemo_pass demo_db
+```
+```sql
+select * from customers_scd0;
+select * from customers_scd1;
+select * from customers_scd2;
+```
+
+### BONUS delete a record and see what happens
+```bash
+docker exec -i mysql_scd mysql -u root -proot demo_db < ./scripts/03_delete_customer.sql
+
+docker exec -it dbt_scd dbt build
 ```
 ```sql
 select * from customers_scd0;
