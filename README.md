@@ -1,6 +1,8 @@
 # dbt-slowly-changing-dimensions
 Practical examples of Slowly Changing Dimensions (SCD Type 0, 1, and 2) using dbt and MySQL.
 
+Read the full [tutorial on Medium](https://ijaniszewski.medium.com/data-engineering-understanding-slowly-changing-dimensions-scd-with-dbt-98b37f3ddf03).
+
 ## Running Steps (Full Flow)
 
 #### Start everything
